@@ -6,8 +6,6 @@
 #define LINE_THICKNESS 1.0f
 #define CORNER_RADIUS 6.0f
 
-#define SEARCH_INSET 10.0f
-
 #pragma mark -
 
 @implementation BackgroundView

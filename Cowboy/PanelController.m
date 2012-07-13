@@ -6,10 +6,8 @@
 #define OPEN_DURATION .15
 #define CLOSE_DURATION .1
 
-#define SEARCH_INSET 17
-
-#define POPUP_HEIGHT 570
-#define PANEL_WIDTH 460
+#define POPUP_HEIGHT 590
+#define PANEL_WIDTH 440
 #define MENU_ANIMATION_DURATION .1
 
 #pragma mark -
@@ -18,7 +16,6 @@
 
 @synthesize backgroundView = _backgroundView;
 @synthesize delegate = _delegate;
-@synthesize webView;
 
 #pragma mark -
 
@@ -53,10 +50,6 @@
     NSRect panelRect = [[self window] frame];
     panelRect.size.height = POPUP_HEIGHT;
     [[self window] setFrame:panelRect display:NO];
-  
-    NSURL *url = [NSURL URLWithString:@"http://localhost:3000/login"];
-    [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
-    [webView stringByEvaluatingJavaScriptFromString:@"document.ontouchmove = function(e){e.preventDefault();}"];
 }
 
 #pragma mark - Public accessors
