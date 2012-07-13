@@ -21,6 +21,8 @@
 		43BD8E9215B0BBA800D17E19 /* outright_colors.png in Resources */ = {isa = PBXBuildFile; fileRef = 43BD8E9015B0BBA800D17E19 /* outright_colors.png */; };
 		43BD8E9315B0BBA800D17E19 /* outright.png in Resources */ = {isa = PBXBuildFile; fileRef = 43BD8E9115B0BBA800D17E19 /* outright.png */; };
 		43BD8E9615B0BBF900D17E19 /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43BD8E9515B0BBF900D17E19 /* Panel.xib */; };
+		43BD8E9815B0BD7400D17E19 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43BD8E9715B0BD7400D17E19 /* WebKit.framework */; };
+		43BD8E9C15B0BE0B00D17E19 /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 43BD8E9B15B0BE0B00D17E19 /* icon.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		43BD8E9015B0BBA800D17E19 /* outright_colors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = outright_colors.png; sourceTree = "<group>"; };
 		43BD8E9115B0BBA800D17E19 /* outright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = outright.png; sourceTree = "<group>"; };
 		43BD8E9515B0BBF900D17E19 /* Panel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Panel.xib; sourceTree = "<group>"; };
+		43BD8E9715B0BD7400D17E19 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		43BD8E9B15B0BE0B00D17E19 /* icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43BD8E9815B0BD7400D17E19 /* WebKit.framework in Frameworks */,
 				43BD8E5E15B0B84A00D17E19 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,6 +72,7 @@
 		43BD8E4E15B0B84A00D17E19 = {
 			isa = PBXGroup;
 			children = (
+				43BD8E9B15B0BE0B00D17E19 /* icon.jpg */,
 				43BD8E6315B0B84A00D17E19 /* Cowboy */,
 				43BD8E5C15B0B84A00D17E19 /* Frameworks */,
 				43BD8E5A15B0B84A00D17E19 /* Products */,
@@ -84,6 +90,7 @@
 		43BD8E5C15B0B84A00D17E19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				43BD8E9715B0BD7400D17E19 /* WebKit.framework */,
 				43BD8E5D15B0B84A00D17E19 /* Cocoa.framework */,
 				43BD8E5F15B0B84A00D17E19 /* Other Frameworks */,
 			);
@@ -234,6 +241,7 @@
 				43BD8E9215B0BBA800D17E19 /* outright_colors.png in Resources */,
 				43BD8E9315B0BBA800D17E19 /* outright.png in Resources */,
 				43BD8E9615B0BBF900D17E19 /* Panel.xib in Resources */,
+				43BD8E9C15B0BE0B00D17E19 /* icon.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
