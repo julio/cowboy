@@ -1,3 +1,4 @@
+#import "Webkit/Webkit.h"
 #import "BackgroundView.h"
 #import "StatusItemView.h"
 
@@ -18,9 +19,11 @@
     BOOL _hasActivePanel;
     __unsafe_unretained BackgroundView *_backgroundView;
     __unsafe_unretained id<PanelControllerDelegate> _delegate;
+    __unsafe_unretained WebView *webView;
 }
 
 @property (nonatomic, unsafe_unretained) IBOutlet BackgroundView *backgroundView;
+@property (nonatomic, unsafe_unretained) IBOutlet WebView *webView;
 
 @property (nonatomic) BOOL hasActivePanel;
 @property (nonatomic, unsafe_unretained, readonly) id<PanelControllerDelegate> delegate;
