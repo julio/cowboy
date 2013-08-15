@@ -6,8 +6,8 @@
 #define OPEN_DURATION .15
 #define CLOSE_DURATION .1
 
-#define PANEL_WIDTH 680
-#define POPUP_HEIGHT 480
+#define PANEL_WIDTH 1300
+#define POPUP_HEIGHT 850
 #define MENU_ANIMATION_DURATION .1
 
 #pragma mark -
@@ -52,7 +52,7 @@
   panelRect.size.height = POPUP_HEIGHT;
   [[self window] setFrame:panelRect display:NO];
   
-  NSURL *url = [NSURL URLWithString:@"http://localhost:3000/quickview"];
+  NSURL *url = [NSURL URLWithString:@"http://secure.outright.com/admin/importer_progress"];
   [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
