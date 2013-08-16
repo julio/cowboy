@@ -37,12 +37,9 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         //NSLog(@"IP Address: %@", [JSON valueForKeyPath:@"origin"]);
         int alertLevel = [[JSON objectForKey:@"level"] intValue];
-        _statusItemView.isGood = YES; // alertLevel == 1 ? YES : NO;
-        _statusItemView.isBad  = alertLevel == 2 ? YES : NO;
-        _statusItemView.isUgly = alertLevel == 3 ? YES : NO;
-
-        NSLog(@"is good: %d", _statusItemView.isGood == YES ? 1: 0);
-        NSLog(@"Level: %d", alertLevel);
+        _statusItemView.isGood = alertLevel == 1;
+        _statusItemView.isBad  = alertLevel == 2;
+        _statusItemView.isUgly = alertLevel == 3;
         [_statusItemView redrawIcon];
     } failure:nil];
     

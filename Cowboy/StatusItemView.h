@@ -24,9 +24,9 @@
 @property (nonatomic, strong) NSImage *image3;
 @property (nonatomic, strong) NSImage *alternateImage;
 @property (nonatomic, setter = setHighlighted:) BOOL isHighlighted;
-@property (nonatomic, setter = setHighlighted:) BOOL isGood;
-@property (nonatomic, setter = setHighlighted:) BOOL isBad;
-@property (nonatomic, setter = setHighlighted:) BOOL isUgly;
+@property (nonatomic, setter = setGood:) BOOL isGood;
+@property (nonatomic, setter = setBad:) BOOL isBad;
+@property (nonatomic, setter = setUgly:) BOOL isUgly;
 @property (nonatomic, readonly) NSRect globalRect;
 @property (nonatomic) SEL action;
 @property (nonatomic, unsafe_unretained) id target;
