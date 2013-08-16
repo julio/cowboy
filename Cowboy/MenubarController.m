@@ -35,17 +35,31 @@
     NSURL *url = [NSURL URLWithString:@"https://secure.outright.com/admin/importer_alerts/current"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        //NSLog(@"IP Address: %@", [JSON valueForKeyPath:@"origin"]);
+
         int alertLevel = [[JSON objectForKey:@"level"] intValue];
         _statusItemView.isGood = alertLevel == 1;
         _statusItemView.isBad  = alertLevel == 2;
         _statusItemView.isUgly = alertLevel == 3;
         [_statusItemView redrawIcon];
+        
+        NSString *alert = [JSON objectForKey:@"level_name"];
+        NSString *description = [JSON objectForKey:@"description"];
+        NSString *fullAlert = [NSString stringWithFormat:@"%@ : %@", description, alert];
+        
+        [self showNotification:fullAlert];
     } failure:nil];
     
     [operation start];
+}
+
+- (IBAction)showNotification:(NSString *)alert
+{
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    notification.title = @"Importer Alerts";
+    notification.informativeText = alert;
+    notification.soundName = NSUserNotificationDefaultSoundName;
     
-    
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 
 - (void)dealloc
