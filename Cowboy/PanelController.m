@@ -6,8 +6,8 @@
 #define OPEN_DURATION .15
 #define CLOSE_DURATION .1
 
-#define PANEL_WIDTH 1300
-#define POPUP_HEIGHT 850
+#define PANEL_WIDTH 800
+#define POPUP_HEIGHT 600
 #define MENU_ANIMATION_DURATION .1
 
 #pragma mark -
