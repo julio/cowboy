@@ -1,4 +1,5 @@
 #import "OutrightAppDelegate.h"
+#import "HTTPClient.h"
 
 @implementation OutrightAppDelegate
 
@@ -46,8 +47,7 @@ void *kContextActivePanel = &kContextActivePanel;
 
 - (IBAction)togglePanel:(id)sender
 {
-  self.menubarController.hasActiveIcon = !self.menubarController.hasActiveIcon;
-  self.panelController.hasActivePanel = self.menubarController.hasActiveIcon;
+  self.panelController.hasActivePanel = !self.panelController.hasActivePanel;
 }
 
 #pragma mark - Public accessors
