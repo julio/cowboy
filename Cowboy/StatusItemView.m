@@ -11,6 +11,7 @@
 @synthesize image1 = _image1;
 @synthesize image2 = _image2;
 @synthesize image3 = _image3;
+@synthesize image4 = _image4;
 @synthesize action = _action;
 @synthesize target = _target;
 
@@ -35,9 +36,18 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-//	[self.statusItem drawStatusBarBackgroundInRect:dirtyRect withHighlight:self.isHighlighted];
-    
-    NSImage *icon = self.isGood ? self.image1 : (self.isBad ? self.image2 : self.image3);
+    NSImage *icon;
+
+    if (self.isGood) {
+        icon = self.image1;
+    } else if (self.isBad) {
+        icon = self.image2;
+    } else if (self.isUgly) {
+        icon = self.image3;
+    } else {
+        icon = self.image4;
+    }
+
     NSSize iconSize = [icon size];
     NSRect bounds = self.bounds;
     CGFloat iconX = roundf((NSWidth(bounds) - iconSize.width) / 2);
