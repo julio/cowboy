@@ -18,11 +18,37 @@
         _statusItemView = [[StatusItemView alloc] initWithStatusItem:statusItem];
         _statusItemView.image = [NSImage imageNamed:@"icon-green"];
         _statusItemView.alternateImage = [NSImage imageNamed:@"icon-red"];
+        _statusItemView.image1 = [NSImage imageNamed:@"icon-green"];
+        _statusItemView.image2 = [NSImage imageNamed:@"icon-yellow"];
+        _statusItemView.image3 = [NSImage imageNamed:@"icon-red"];
         _statusItemView.action = @selector(togglePanel:);
         
         [self updateStats];
     }
+    
+    [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
     return self;
+}
+
+- (void)refresh
+{
+    NSURL *url = [NSURL URLWithString:@"https://secure.outright.com/admin/importer_alerts/current"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        //NSLog(@"IP Address: %@", [JSON valueForKeyPath:@"origin"]);
+        int alertLevel = [[JSON objectForKey:@"level"] intValue];
+        _statusItemView.isGood = YES; // alertLevel == 1 ? YES : NO;
+        _statusItemView.isBad  = alertLevel == 2 ? YES : NO;
+        _statusItemView.isUgly = alertLevel == 3 ? YES : NO;
+
+        NSLog(@"is good: %d", _statusItemView.isGood == YES ? 1: 0);
+        NSLog(@"Level: %d", alertLevel);
+        [_statusItemView redrawIcon];
+    } failure:nil];
+    
+    [operation start];
+    
+    
 }
 
 - (void)dealloc

@@ -36,22 +36,10 @@ void *kContextActivePanel = &kContextActivePanel;
   self.menubarController = [[MenubarController alloc] init];
   
 
-    [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
+    
 }
 
-- (void)refresh
-{
-    NSURL *url = [NSURL URLWithString:@"https://secure.outright.com/admin/importer_alerts/current"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        //NSLog(@"IP Address: %@", [JSON valueForKeyPath:@"origin"]);
-        NSLog(@"%@", [JSON valueForKey:@"level"]);
-    } failure:nil];
-    
-    [operation start];
-    
-    
-}
+
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {

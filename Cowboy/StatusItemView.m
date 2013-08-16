@@ -6,6 +6,12 @@
 @synthesize image = _image;
 @synthesize alternateImage = _alternateImage;
 @synthesize isHighlighted = _isHighlighted;
+@synthesize isGood = _isGood;
+@synthesize isBad  = _isBad;
+@synthesize isUgly = _isUgly;
+@synthesize image1 = _image1;
+@synthesize image2 = _image2;
+@synthesize image3 = _image3;
 @synthesize action = _action;
 @synthesize target = _target;
 
@@ -32,7 +38,7 @@
 {
 //	[self.statusItem drawStatusBarBackgroundInRect:dirtyRect withHighlight:self.isHighlighted];
     
-    NSImage *icon = self.isHighlighted ? self.alternateImage : self.image;
+    NSImage *icon = self.isGood ? self.image1 : (self.isBad ? self.image2 : self.image3);
     NSSize iconSize = [icon size];
     NSRect bounds = self.bounds;
     CGFloat iconX = roundf((NSWidth(bounds) - iconSize.width) / 2);
@@ -58,11 +64,16 @@
     _isHighlighted = newFlag;
     [self setNeedsDisplay:YES];
 }
+- (void) redrawIcon
+{
+    [self setNeedsDisplay:YES];
+}
 
 #pragma mark -
 
 - (void)setImage:(NSImage *)newImage
 {
+    NSLog(@"image %@", newImage);
     if (_image != newImage) {
         _image = newImage;
         [self setNeedsDisplay:YES];
