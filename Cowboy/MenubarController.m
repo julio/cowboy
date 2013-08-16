@@ -22,7 +22,7 @@
         _statusItemView.action = @selector(togglePanel:);
     }
     
-    [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
     return self;
 }
 
