@@ -16,14 +16,10 @@
         // Install status item into the menu bar
         NSStatusItem *statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:STATUS_ITEM_VIEW_WIDTH];
         _statusItemView = [[StatusItemView alloc] initWithStatusItem:statusItem];
-        _statusItemView.image = [NSImage imageNamed:@"icon-green"];
-        _statusItemView.alternateImage = [NSImage imageNamed:@"icon-red"];
         _statusItemView.image1 = [NSImage imageNamed:@"icon-green"];
         _statusItemView.image2 = [NSImage imageNamed:@"icon-yellow"];
         _statusItemView.image3 = [NSImage imageNamed:@"icon-red"];
         _statusItemView.action = @selector(togglePanel:);
-        
-        [self updateStats];
     }
     
     [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
@@ -42,11 +38,16 @@
         _statusItemView.isUgly = alertLevel == 3;
         [_statusItemView redrawIcon];
         
-        NSString *alert = [JSON objectForKey:@"level_name"];
-        NSString *description = [JSON objectForKey:@"description"];
-        NSString *fullAlert = [NSString stringWithFormat:@"%@ : %@", description, alert];
+        NSString *levelName    = [JSON objectForKey:@"level_name"];
+        NSString *description  = [JSON objectForKey:@"description"];
+        NSString *currentAlert = [NSString stringWithFormat:@"(%@) : %@", levelName, description];
         
-        [self showNotification:fullAlert];
+        if([currentAlert isNotEqualTo:previousAlert]) {
+            NSLog(@"previous: %@", previousAlert);
+            NSLog(@"current: %@", currentAlert);
+            [self showNotification:currentAlert];
+            previousAlert = currentAlert;
+        }
     } failure:nil];
     
     [operation start];
@@ -85,25 +86,6 @@
 - (void)setHasActiveIcon:(BOOL)flag
 {
     self.statusItemView.isHighlighted = flag;
-}
-
-- (void)updateStats
-{
-    [[HTTPClient sharedClient] setUsername:@"andrew.katz@outright.com" andPassword:@"1234"];
-    
-    [[HTTPClient sharedClient] getPath:@"/admin/importer_progress" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-        
-        int importerLevel = [[[responseObject objectForKey:@"importer_status"] objectForKey:@"level"] intValue];
-        BOOL importerStatus = importerLevel == 1;
-        
-        NSLog(@"%d", importerLevel);
-        [self setHasActiveIcon:importerStatus];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        // error stuff here
-        NSLog(@"error: %@", error);
-    }];
 }
 
 @end

@@ -4,7 +4,6 @@
 
 @synthesize statusItem = _statusItem;
 @synthesize image = _image;
-@synthesize alternateImage = _alternateImage;
 @synthesize isHighlighted = _isHighlighted;
 @synthesize isGood = _isGood;
 @synthesize isBad  = _isBad;
@@ -77,16 +76,6 @@
     if (_image != newImage) {
         _image = newImage;
         [self setNeedsDisplay:YES];
-    }
-}
-
-- (void)setAlternateImage:(NSImage *)newImage
-{
-    if (_alternateImage != newImage) {
-        _alternateImage = newImage;
-        if (self.isHighlighted) {
-            [self setNeedsDisplay:YES];
-        }
     }
 }
 

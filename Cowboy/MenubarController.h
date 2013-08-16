@@ -9,6 +9,7 @@
 @interface MenubarController : NSObject {
 @private
     StatusItemView *_statusItemView;
+    NSString * previousAlert;
 }
 
 @property (nonatomic) BOOL hasActiveIcon;
