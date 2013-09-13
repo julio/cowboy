@@ -9,6 +9,7 @@
 
 #define PANEL_WIDTH 200
 #define POPUP_HEIGHT 254
+#define REFRESH_TIME 60
 #define MENU_ANIMATION_DURATION .1
 
 #pragma mark -
@@ -54,6 +55,12 @@
     panelRect.size.height = POPUP_HEIGHT;
     [[self window] setFrame:panelRect display:NO];
     
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_TIME target:self selector:@selector(refresh) userInfo:nil repeats:YES];
+    [timer fire];
+}
+
+- (void)refresh
+{
     [[WebServicesController sharedController] getImporterProgressWithBlock:^(NSDictionary *response) {
         //_stats = [response objectForKey:@"response"];
         _stats = response;

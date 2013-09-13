@@ -44,5 +44,6 @@
 - (NSString *)formattedImporterProgressCount:(NSString *)key;
 - (long)rawImporterProgressCount:(NSString *)key;
 - (IBAction)showDetails:(id)sender;
+- (void)refresh;
 
 @end
