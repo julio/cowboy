@@ -3,3 +3,4 @@ Cowboy.xcodeproj/xcuserdata/*.xcuserdatad/
 Cowboy.xcworkspace/xcuserdata/*.xcuserdatad/
 Pods/Pods.xcodeproj/xcuserdata/*.xcuserdatad/
 Cowboy.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad/
+Credentials.plist
