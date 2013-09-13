@@ -19,11 +19,14 @@
     BOOL _hasActivePanel;
     __unsafe_unretained BackgroundView *_backgroundView;
     __unsafe_unretained id<PanelControllerDelegate> _delegate;
-    __unsafe_unretained WebView *webView;
 }
 
 @property (nonatomic, unsafe_unretained) IBOutlet BackgroundView *backgroundView;
-@property (nonatomic, unsafe_unretained) IBOutlet WebView *webView;
+@property (nonatomic, unsafe_unretained) IBOutlet NSTextField *successText;
+@property (nonatomic, unsafe_unretained) IBOutlet NSTextField *importingText;
+@property (nonatomic, unsafe_unretained) IBOutlet NSTextField *retryingText;
+@property (nonatomic, unsafe_unretained) IBOutlet NSTextField *errorText;
+@property (nonatomic, unsafe_unretained) IBOutlet NSTextField *totalSuccessText;
 
 @property (nonatomic) BOOL hasActivePanel;
 @property (nonatomic, unsafe_unretained, readonly) id<PanelControllerDelegate> delegate;

@@ -6,17 +6,17 @@
 #define OPEN_DURATION .15
 #define CLOSE_DURATION .1
 
-#define PANEL_WIDTH 800
-#define POPUP_HEIGHT 600
+#define PANEL_WIDTH 150
+#define POPUP_HEIGHT 250
 #define MENU_ANIMATION_DURATION .1
 
 #pragma mark -
 
 @implementation PanelController
 
-@synthesize webView;
 @synthesize backgroundView = _backgroundView;
 @synthesize delegate = _delegate;
+@synthesize successText, errorText, importingText, retryingText, totalSuccessText;
 
 #pragma mark -
 
@@ -53,7 +53,7 @@
     [[self window] setFrame:panelRect display:NO];
     
     NSURL *url = [NSURL URLWithString:@"http://secure.outright.com/admin/importer_progress"];
-    [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
+    // [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
 #pragma mark - Public accessors
@@ -71,7 +71,6 @@
         
         if (_hasActivePanel)
         {
-            [webView reload: nil  ];
             [self openPanel];
         }
         else

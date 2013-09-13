@@ -6,7 +6,7 @@
 
 @synthesize statusItemView = _statusItemView;
 
-#define REFRESH_TIME 60
+#define REFRESH_TIME 6
 
 #pragma mark -
 
