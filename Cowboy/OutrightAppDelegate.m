@@ -1,6 +1,5 @@
 #import "OutrightAppDelegate.h"
 #import "HTTPClient.h"
-#import "WebServicesController.h"
 
 @implementation OutrightAppDelegate
 
@@ -35,12 +34,6 @@ void *kContextActivePanel = &kContextActivePanel;
 {
   // Install icon into the menu bar
   self.menubarController = [[MenubarController alloc] init];
-    
-    [[WebServicesController sharedController] getImporterProgressWithBlock:^(NSDictionary *response) {
-        //_stats = [response objectForKey:@"response"];
-            NSLog(@"Response: %@", response);
-        //[self reloadData];
-    }];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender

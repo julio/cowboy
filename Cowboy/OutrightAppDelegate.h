@@ -9,7 +9,6 @@
 
 @property (nonatomic, strong) MenubarController *menubarController;
 @property (nonatomic, strong, readonly) PanelController *panelController;
-@property (strong, nonatomic) NSDictionary *stats;
 
 - (IBAction)togglePanel:(id)sender;
 

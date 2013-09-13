@@ -22,11 +22,13 @@
 }
 
 @property (nonatomic, unsafe_unretained) IBOutlet BackgroundView *backgroundView;
-@property (nonatomic, unsafe_unretained) IBOutlet NSTextField *successText;
 @property (nonatomic, unsafe_unretained) IBOutlet NSTextField *importingText;
 @property (nonatomic, unsafe_unretained) IBOutlet NSTextField *retryingText;
+@property (nonatomic, unsafe_unretained) IBOutlet NSTextField *queuedText;
 @property (nonatomic, unsafe_unretained) IBOutlet NSTextField *errorText;
 @property (nonatomic, unsafe_unretained) IBOutlet NSTextField *totalSuccessText;
+@property (nonatomic, unsafe_unretained) IBOutlet NSLevelIndicator *successProgress;
+@property (strong, nonatomic) NSDictionary *stats;
 
 @property (nonatomic) BOOL hasActivePanel;
 @property (nonatomic, unsafe_unretained, readonly) id<PanelControllerDelegate> delegate;
@@ -36,5 +38,11 @@
 - (void)openPanel;
 - (void)closePanel;
 - (NSRect)statusRectForWindow:(NSWindow *)window;
+- (void)reloadData;
+- (NSString *)formattedImporterProgressPercent:(NSString *)key;
+- (double)rawImporterProgressPercent:(NSString *)key;
+- (NSString *)formattedImporterProgressCount:(NSString *)key;
+- (long)rawImporterProgressCount:(NSString *)key;
+- (IBAction)showDetails:(id)sender;
 
 @end

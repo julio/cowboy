@@ -2,12 +2,13 @@
 #import "BackgroundView.h"
 #import "StatusItemView.h"
 #import "MenubarController.h"
+#import "WebServicesController.h"
 
 #define OPEN_DURATION .15
 #define CLOSE_DURATION .1
 
-#define PANEL_WIDTH 150
-#define POPUP_HEIGHT 250
+#define PANEL_WIDTH 200
+#define POPUP_HEIGHT 254
 #define MENU_ANIMATION_DURATION .1
 
 #pragma mark -
@@ -16,7 +17,8 @@
 
 @synthesize backgroundView = _backgroundView;
 @synthesize delegate = _delegate;
-@synthesize successText, errorText, importingText, retryingText, totalSuccessText;
+@synthesize errorText, queuedText, importingText, retryingText, totalSuccessText;
+@synthesize successProgress;
 
 #pragma mark -
 
@@ -52,11 +54,56 @@
     panelRect.size.height = POPUP_HEIGHT;
     [[self window] setFrame:panelRect display:NO];
     
-    NSURL *url = [NSURL URLWithString:@"http://secure.outright.com/admin/importer_progress"];
-    // [[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
+    [[WebServicesController sharedController] getImporterProgressWithBlock:^(NSDictionary *response) {
+        //_stats = [response objectForKey:@"response"];
+        _stats = response;
+        [self reloadData];
+    }];
 }
 
 #pragma mark - Public accessors
+
+- (void)reloadData
+{
+    [errorText        setStringValue:[self formattedImporterProgressPercent:@"system_error_percent"]];
+    [retryingText     setStringValue:[self formattedImporterProgressPercent:@"retryable_error_percent"]];
+    [importingText    setStringValue:[self formattedImporterProgressPercent:@"importing_percent"]];
+    [queuedText       setStringValue:[self formattedImporterProgressPercent:@"queued_percent"]];
+    [successProgress  setDoubleValue:[self rawImporterProgressPercent:@"success_percent"]];
+    [totalSuccessText setStringValue:[self formattedImporterProgressCount:@"success"]];
+}
+
+- (double)rawImporterProgressPercent:(NSString *)key
+{
+    return [[[[_stats valueForKey:@"axe_stats"] valueForKey:@"all"] valueForKey:key] doubleValue];
+}
+
+- (long)rawImporterProgressCount:(NSString *)key
+{
+    return [[[[_stats valueForKey:@"axe_stats"] valueForKey:@"all"] valueForKey:key] longValue];
+}
+
+- (NSString *)formattedImporterProgressPercent:(NSString *)key
+{
+    return [NSString stringWithFormat:@"%.2f%%", [self rawImporterProgressPercent:key] ];
+}
+
+- (NSString *)formattedImporterProgressCount:(NSString *)key
+{
+    NSNumberFormatter *numberFormat = [[NSNumberFormatter alloc] init];
+
+    numberFormat.usesGroupingSeparator = YES;
+    numberFormat.groupingSeparator = @",";
+    numberFormat.groupingSize = 3;
+    NSNumber *count = [NSNumber numberWithLong:[self rawImporterProgressCount:key]];
+    
+    return [numberFormat stringFromNumber:count];
+}
+
+- (IBAction)showDetails:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://secure.outright.com/admin/importer_progress"]];
+}
 
 - (BOOL)hasActivePanel
 {

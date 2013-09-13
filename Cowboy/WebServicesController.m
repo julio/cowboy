@@ -30,12 +30,9 @@
     NSString *credentialsFilePath = [[NSBundle mainBundle] pathForResource:@"Credentials" ofType:@"plist"];
     NSDictionary *credentialsDict = [NSDictionary  dictionaryWithContentsOfFile:credentialsFilePath];
     NSString *username = [credentialsDict valueForKey:@"admin_username"];
-    NSLog(@"Username: %@", username);
-    NSString *password = [[credentialsDict valueForKey:@"admin_password"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *password = [credentialsDict valueForKey:@"admin_password"];
     NSString *fullUrl = [NSString stringWithFormat:@"http://%@:%@@secure.outright.com/%@", username, password, urlString];
     NSURL *url = [NSURL URLWithString:fullUrl];
-    
-    
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
