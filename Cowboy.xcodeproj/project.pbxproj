@@ -21,7 +21,7 @@
 		43BD8E9615B0BBF900D17E19 /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43BD8E9515B0BBF900D17E19 /* Panel.xib */; };
 		43E34D0415B0D0C90053601B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43E34D0315B0D0C90053601B /* WebKit.framework */; };
 		46270CA317E3A21200FD87E0 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46270CA217E3A21200FD87E0 /* Credentials.plist */; };
-		46270CA517E3BF5600FD87E0 /* Credentials.sample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46270CA417E3BF5600FD87E0 /* Credentials.sample.plist */; };
+		46270CA717E3C0CC00FD87E0 /* Credentials.sample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46270CA617E3C0CC00FD87E0 /* Credentials.sample.plist */; };
 		464A145C17BDF855006F2AD8 /* icon-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 464A145617BDF855006F2AD8 /* icon-green.png */; };
 		464A145D17BDF855006F2AD8 /* icon-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 464A145717BDF855006F2AD8 /* icon-green@2x.png */; };
 		464A145E17BDF855006F2AD8 /* icon-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 464A145817BDF855006F2AD8 /* icon-red.png */; };
@@ -75,7 +75,7 @@
 		43BD8E9515B0BBF900D17E19 /* Panel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Panel.xib; sourceTree = "<group>"; };
 		43E34D0315B0D0C90053601B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		46270CA217E3A21200FD87E0 /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Credentials.plist; path = ../Credentials.plist; sourceTree = "<group>"; };
-		46270CA417E3BF5600FD87E0 /* Credentials.sample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.sample.plist; sourceTree = "<group>"; };
+		46270CA617E3C0CC00FD87E0 /* Credentials.sample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.sample.plist; sourceTree = SOURCE_ROOT; };
 		464A145617BDF855006F2AD8 /* icon-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-green.png"; sourceTree = "<group>"; };
 		464A145717BDF855006F2AD8 /* icon-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-green@2x.png"; sourceTree = "<group>"; };
 		464A145817BDF855006F2AD8 /* icon-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-red.png"; sourceTree = "<group>"; };
@@ -187,8 +187,8 @@
 		43BD8E6415B0B84A00D17E19 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				46270CA617E3C0CC00FD87E0 /* Credentials.sample.plist */,
 				43BD8E6515B0B84A00D17E19 /* Cowboy-Info.plist */,
-				46270CA417E3BF5600FD87E0 /* Credentials.sample.plist */,
 				46270CA217E3A21200FD87E0 /* Credentials.plist */,
 				43BD8E6615B0B84A00D17E19 /* InfoPlist.strings */,
 				43BD8E6915B0B84A00D17E19 /* main.m */,
@@ -361,7 +361,7 @@
 				46E1E20717BE5797008374AD /* icon-grey.png in Resources */,
 				46E1E20817BE5797008374AD /* icon-grey@2x.png in Resources */,
 				46270CA317E3A21200FD87E0 /* Credentials.plist in Resources */,
-				46270CA517E3BF5600FD87E0 /* Credentials.sample.plist in Resources */,
+				46270CA717E3C0CC00FD87E0 /* Credentials.sample.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
