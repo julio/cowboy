@@ -13,6 +13,5 @@
 + (WebServicesController *)sharedController;
 
 - (void)getImporterProgressWithBlock:(void (^)(NSDictionary *))completeBlock;
-- (void)getImporterErrorsWithBlock:(void (^)(NSDictionary *))completeBlock;
 
 @end
