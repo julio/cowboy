@@ -6,6 +6,8 @@
 
 @synthesize statusItemView = _statusItemView;
 
+#define REFRESH_TIME 60
+
 #pragma mark -
 
 - (id)init
@@ -19,10 +21,13 @@
         _statusItemView.image1 = [NSImage imageNamed:@"icon-green"];
         _statusItemView.image2 = [NSImage imageNamed:@"icon-yellow"];
         _statusItemView.image3 = [NSImage imageNamed:@"icon-red"];
+        _statusItemView.image4 = [NSImage imageNamed:@"icon-grey"];
         _statusItemView.action = @selector(togglePanel:);
     }
     
-    [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(refresh) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_TIME target:self selector:@selector(refresh) userInfo:nil repeats:YES];
+    [timer fire];
+    
     return self;
 }
 
@@ -31,7 +36,7 @@
     NSURL *url = [NSURL URLWithString:@"https://secure.outright.com/admin/importer_alerts/current"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-
+        
         int alertLevel = [[JSON objectForKey:@"level"] intValue];
         _statusItemView.isGood = alertLevel == 1;
         _statusItemView.isBad  = alertLevel == 2;
