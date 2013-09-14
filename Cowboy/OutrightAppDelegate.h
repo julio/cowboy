@@ -1,6 +1,7 @@
 #import <Cocoa/Cocoa.h>
 #import "MenubarController.h"
 #import "PanelController.h"
+#import "AFNetworking.h"
 
 @interface OutrightAppDelegate : NSObject <NSApplicationDelegate, PanelControllerDelegate>
 

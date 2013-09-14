@@ -1,0 +1,14 @@
+<<<<<<< HEAD
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Cowboy.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>
+=======
+<?xml version='1.0' encoding='UTF-8'?><Workspace version='1.0'><FileRef location='group:Cowboy.xcodeproj'/><FileRef location='group:Pods/Pods.xcodeproj'/></Workspace>
+>>>>>>> d0053f26a4b385a2f5b417e0a128272cf1e39015
